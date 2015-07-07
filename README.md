@@ -70,7 +70,7 @@ To https://github.com/VMML/Livre.git
 ```
 
 ## Building
-The usual workflow to compile the project is to create a *build* subfolder (it will be ignored by git) and then run CMake to generate the actual building script for your working environment. For example, to build the project using *make* you should do:
+The usual workflow to compile the project is to create a *build* subfolder (it will be ignored by *git*) and then run *CMake* to generate the actual building script for your working environment. For example, to build the project using *make* you should do:
 ```
 $ mkdir build
 $ cd build/
