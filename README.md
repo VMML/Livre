@@ -10,9 +10,20 @@ Largescale Interactive Volume Rendering Engine
 # VMML branch
 The VMML branch contains the experimental additions and changes made by members of the VMML research group working in parallel rendering projects. Only members of the *Parallel Rendering VMML* team have write access to the repository and can push their changes directly to the repository. Other users trying to collaborate will have to create pull requests from their personal forks as usual in GitHub.
 
-## Remotes
-After cloning the repository for the first time, there is only one configured remote (*origin*) pointing to the original repository in the VMML GitHub account:
+## Cloning and remotes
+The first step to work with any *git* repository is to create a local clone in the development machine:
+```
+$ git clone https://github.com/VMML/Livre.git
+Cloning into 'Livre'...
+remote: Counting objects: 4352, done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 4352 (delta 5), reused 0 (delta 0), pack-reused 4340
+Receiving objects: 100% (4352/4352), 5.66 MiB | 2.92 MiB/s, done.
+Resolving deltas: 100% (2249/2249), done.
+Checking connectivity... done.
+```
 
+After cloning the repository for the first time, there is only one configured remote (*origin*) pointing to the original repository in the VMML GitHub account:
 ```
 $git remote -v
 origin	https://github.com/VMML/Livre.git (fetch)
@@ -41,6 +52,7 @@ $ git checkout --track origin/vmml
 Branch vmml set up to track remote branch vmml from origin.
 Switched to a new branch 'vmml'
 ```
+
 If you want to give your local branch another name, you can also do it with slightly different command line parameters:
 ```
 $ git checkout -b vmml-alt-name origin/vmml
