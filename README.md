@@ -14,9 +14,16 @@ The VMML branch contains the experimental additions and changes made by members 
 After cloning the repository for the first time, there is only one configured remote (*origin*) pointing to the original repository in the VMML GitHub account:
 
 ```
-$ git remote -v
+$git remote -v
 origin	https://github.com/VMML/Livre.git (fetch)
 origin	https://github.com/VMML/Livre.git (push)
+```
+
+It is recommended to setup the *upstream* (and *user* when possible) remotes:
+```
+$git remote add upstream https://github.com/BlueBrain/Livre.git
+
+$git remote add user https://github.com/__username__/Livre.git
 
 $ git remote -v
 origin	https://github.com/VMML/Livre.git (fetch)
@@ -27,14 +34,8 @@ user	    https://github.com/__username__/Livre.git (fetch)
 user	    https://github.com/__username__/Livre.git (push)
 ```
 
-It is recommended to setup the *upstream* (and *user* when possible) remotes:
-```
-$git remote add upstream https://github.com/BlueBrain/Livre.git
-$git remote add user https://github.com/__username__/Livre.git
-```
-
 ## Branches
-In this repository, the *master* branch always mirrors the upstream BLueBrain repository. The *vmml* branch should be used to commit new changes. It is thus recommended to create a local *vmml* branch tracking the *origin/vmml* branch:
+In this repository, the *master* branch always mirrors the upstream BlueBrain repository. The *vmml* branch should be used to commit new changes. It is thus recommended to create a local *vmml* branch tracking the *origin/vmml* branch:
 ```
 $ git checkout --track origin/vmml
 Branch vmml set up to track remote branch vmml from origin.
@@ -47,8 +48,8 @@ Branch vmml-alt-name set up to track remote branch vmml from origin.
 Switched to a new branch 'vmml-alt-name'
 ```
 
-## Commit, push and pull
-Try to make frequent and coherent commits to your local repository but do NOT push any change to this repository until it had been tested. Before committing and pushing changes, make sure you are working in the *vmml* branch, that your local copy of the branch is updated and that you add all the relevant changes in the same commit. REMEMBER: your local *vmml* branch should be in sync with *origin/vmml* before pushing any changes. 
+## Pull, commit and push
+Try to make frequent and coherent commits to your local repository but do NOT push any change to this repository until it had been tested. Before committing and pushing changes, make sure you are working in the *vmml* branch, that your local copy of the branch is updated and that you add all the relevant changes in the same commit. REMEMBER: pull and merge the latest changes from *origin/vmml* to your local *vmml* branch before pushing your modifications.
 ```
 $ git branch
   master
@@ -78,3 +79,8 @@ $ cmake ..
 $ make -j8
 ```
 
+## Running
+After building the project, the binaries will be in *build/bin*. The *Tuvok* module to load *.uvf* files is now built by default, so you can use the *--volume uvf://_path_to_file_* command line argument to visualize a volume model. Example:
+```
+$ ./livre --volume uvf:///data/volumes/bonsai/bonsai.uvf 
+```
