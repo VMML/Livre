@@ -2,6 +2,7 @@
  *                     Ahmet Bilgili <ahmet.bilgili@epfl.ch>
  *                     Maxim Makhinya <maxmah@gmail.com>
  *                     David Steiner  <steiner@ifi.uzh.ch>
+ *                     Enrique G. Paredes <egparedes@ifi.uzh.ch>
  *                     Fatih Erol
  *
  * This file is part of Livre <https://github.com/BlueBrain/Livre>
