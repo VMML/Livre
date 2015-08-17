@@ -5,13 +5,12 @@
 include(InstallFiles)
 
 if(NOT LIVRE_USE_REMOTE_DATASOURCE)
-  list(APPEND EXCLUDE_FROM_TESTS Lib/events.cpp)
+  list(APPEND EXCLUDE_FROM_TESTS lib/events.cpp)
 endif()
 
 # Libraries to link the tests executables with
-set(TEST_LIBRARIES LivreLib LivreEq ${Boost_LIBRARIES})
-set(LIVRE_OPTIONAL_LIBRARIES LivreBBPSDKVox LivreFivox LivreUVF LivreRemote
-  LivreMeshVox LivreBBIC)
+set(TEST_LIBRARIES LivreCore LivreLib LivreEq ${Boost_LIBRARIES})
+set(LIVRE_OPTIONAL_LIBRARIES LivreUVF LivreRemote)
 foreach(LIVRE_OPTIONAL_LIBRARY ${LIVRE_OPTIONAL_LIBRARIES})
   if(TARGET ${LIVRE_OPTIONAL_LIBRARY})
     list(APPEND TEST_LIBRARIES ${LIVRE_OPTIONAL_LIBRARY})
@@ -20,8 +19,10 @@ endforeach()
 
 # Create and install all the tests
 if(CMAKE_COMPILER_IS_GNUCXX_PURE)
-  set(Data_dataSource_LINK_LIBRARIES "-Wl,--no-as-needed")
+  set(data_dataSource_LINK_LIBRARIES "-Wl,--no-as-needed")
   set(perf_remoteDataSource_LINK_LIBRARIES "-Wl,--no-as-needed")
 endif()
 include(CommonCTest)
+
+add_subdirectory(core)
 install_files(share/Livre/tests FILES ${TEST_FILES} COMPONENT examples)

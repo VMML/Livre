@@ -1,8 +1,7 @@
 # -*- mode: cmake -*-
-git_subproject(vmmlib https://github.com/VMML/vmmlib.git release_candidate)
+git_subproject(vmmlib https://github.com/VMML/vmmlib.git master)
 git_subproject(Lunchbox https://github.com/VMML/Lunchbox.git vmml)
-git_subproject(dash https://github.com/BlueBrain/dash.git 8207c06)
-git_subproject(zeq https://github.com/HBPVis/zeq.git 457615f)
-git_subproject(RESTBridge https://github.com/BlueBrain/RESTBridge.git 2ea25a6)
+git_subproject(dash https://github.com/BlueBrain/dash.git bdbb912)
+git_subproject(zeq https://github.com/HBPVis/zeq.git acaadb1)
 git_subproject(Collage https://github.com/VMML/Collage.git vmml)
 git_subproject(Equalizer https://github.com/VMML/Equalizer.git vmml)

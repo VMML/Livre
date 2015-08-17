@@ -21,7 +21,7 @@
 #define LIVRE_REMOTE_DATASOURCE_H
 
 #include <livre/core/mathTypes.h>
-#include <livre/core/Data/VolumeDataSourcePlugin.h>
+#include <livre/core/data/VolumeDataSourcePlugin.h>
 
 namespace livre
 {
@@ -44,7 +44,7 @@ class DataSource : public VolumeDataSourcePlugin
 {
 public:
     DataSource();
-    DataSource( const VolumeDataSourcePluginData& initData );
+    explicit DataSource( const VolumeDataSourcePluginData& initData );
     virtual ~DataSource();
 
     MemoryUnitPtr getData( const LODNode& node ) final;

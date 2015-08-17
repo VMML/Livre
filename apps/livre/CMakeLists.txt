@@ -4,9 +4,11 @@
 # This file is part of Livre <https://github.com/BlueBrain/Livre>
 #
 
-set(LIVRE_SOURCES Livre.cpp)
+set(LIVRE_SOURCES livre.cpp)
 set(LIVRE_LINK_LIBRARIES LivreLib LivreEq)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-overloaded-virtual")
+if(NOT MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-overloaded-virtual")
+endif()
 if(CMAKE_COMPILER_IS_GNUCXX_PURE)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed")
 endif()

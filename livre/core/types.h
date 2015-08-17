@@ -30,6 +30,8 @@
 #include <boost/intrusive_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/thread/locks.hpp>
+#include <boost/thread/mutex.hpp>
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/unordered_map.hpp>
 #include <boost/weak_ptr.hpp>
@@ -93,6 +95,7 @@ struct TextureState;
 struct VolumeInformation;
 
 using lunchbox::uint128_t;
+using lunchbox::Strings;
 
 typedef uint64_t Identifier;
 typedef Identifier CacheId;
@@ -182,12 +185,10 @@ typedef std::vector< NodeId > NodeIds;
 /**
  * Vector definitions for complex types
  */
-typedef std::vector< ConstCacheObjectPtr > ConstCacheObjectPtrVector;
+typedef std::vector< CacheObjectPtr > CacheObjects;
+typedef std::vector< ConstCacheObjectPtr > ConstCacheObjects;
 typedef std::vector< RenderBrickPtr > RenderBricks;
-typedef std::vector< std::string > StringVector;
-typedef std::vector< VolumeDataSourcePtr > VolumeDataSourcePtrVector;
-typedef std::vector< TexturePoolPtr > TexturePoolPtrVector;
-typedef std::vector< DashTreePtr > DashTreePtrVector;
+typedef std::vector< TexturePoolPtr > TexturePools;
 
 /**
  * Map definitions
@@ -195,6 +196,7 @@ typedef std::vector< DashTreePtr > DashTreePtrVector;
 typedef boost::unordered_map< NodeId, LODNodePtr > NodeIDLODNodePtrMap;
 typedef boost::unordered_map< NodeId, dash::NodePtr > NodeIDDashNodePtrMap;
 typedef boost::unordered_map< CacheId, CacheObjectPtr > CacheMap;
+typedef boost::unordered_map< CacheId, ConstCacheObjectPtr > ConstCacheMap;
 typedef boost::unordered_map< uint32_t, bool > BoolMap;
 typedef boost::unordered_map< uint32_t, EventHandlerPtr > EventHandlerPtrMap;
 typedef boost::unordered_map< uint32_t, DashConnectionPtr > DashConnectionPtrMap;
