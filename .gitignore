@@ -3,6 +3,7 @@ Makefile
 CMake/common/
 ___*
 build/
+build-debug/
 /Collage/
 /Deflect/
 /Equalizer/
@@ -13,6 +14,7 @@ build/
 /RESTBridge/
 /Servus/
 /Tuvok/
+/ZeroBuf/
 /cppnetlib/
 /dash/
 /hwsd/

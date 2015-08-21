@@ -22,7 +22,6 @@
 
 #include "Controller.h"
 #include "TransferFunctionFile.h"
-#include <livre/core/Render/TransferFunction1D.h>
 
 #include <iostream>
 #include <thread>
