@@ -70,6 +70,10 @@ bool KeyboardHandler::operator ()( EqEventInfo& eqEventInfo )
             return true;
 
         case 'r':
+            std::cout << cameraSettings->getCameraPosition()
+                      << cameraSettings->getCameraLookAt() << std::endl;
+            return true;
+
         case 'R':
             frameSettings->toggleRecording();
             return true;

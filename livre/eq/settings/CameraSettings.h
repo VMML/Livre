@@ -128,6 +128,11 @@ public:
     const Vector3f& getCameraPosition() const { return cameraPosition_; }
 
     /**
+     * Sets the camera orientation, defined by a lookAt vector.
+     */
+    const Vector3f& getCameraLookAt() const { return cameraLookAt_; }
+
+    /**
      * @return the modelview matrix is computed using the model and camera matrix.
      */
     Matrix4f getModelViewMatrix() const;
@@ -142,6 +147,7 @@ private:
     Matrix4f cameraRotation_;
     Matrix4f modelRotation_;
     Vector3f cameraPosition_;
+    Vector3f cameraLookAt_;
 
     bool pilotMode_;
 };

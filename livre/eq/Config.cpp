@@ -20,6 +20,7 @@
 
 #include <livre/eq/Config.h>
 
+#include <livre/eq/cameraAnimation.h>
 #include <livre/eq/Client.h>
 #include <livre/eq/Event.h>
 #include <livre/eq/events/EqEventHandlerFactory.h>
@@ -49,7 +50,9 @@ public:
         , eventMapper( EventHandlerFactoryPtr( new EqEventHandlerFactory ))
         , volumeBBox( Boxf::makeUnitBox( ))
         , redraw( true )
-    {}
+    {
+        animation.loadAnimation( "camera.txt" );
+    }
 
     void publishModelView()
     {
@@ -102,6 +105,7 @@ public:
     std::unique_ptr< zeq::Communicator > communicator;
 #endif
     bool redraw;
+    CameraAnimation animation;
 };
 
 Config::Config( eq::ServerPtr parent )
@@ -189,6 +193,14 @@ bool Config::init()
 
 uint32_t Config::frame()
 {
+    if( _impl->animation.isValid( ))
+    {
+        const CameraAnimation::Step& curStep = _impl->animation.getNextStep();
+        CameraSettingsPtr camera = _impl->framedata.getCameraSettings();
+        camera->setCameraPosition( curStep.origin );
+        camera->setCameraLookAt( curStep.lookat );
+    }
+
     // Set current frame (start/end may have changed)
     FrameSettingsPtr frameSettings = _impl->framedata.getFrameSettings();
     const ApplicationParameters& params = getApplicationParameters();
@@ -217,7 +229,8 @@ uint32_t Config::frame()
 
 bool Config::needRedraw()
 {
-    return _impl->redraw || getApplicationParameters().animation != 0;
+    return _impl->redraw || getApplicationParameters().animation != 0 ||
+           _impl->animation.isValid();
 }
 
 void Config::postRedraw()

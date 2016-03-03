@@ -147,6 +147,7 @@ void CameraSettings::setCameraRotation( const Vector3f& rotation )
 
 void CameraSettings::setCameraLookAt( const Vector3f& lookAt )
 {
+    cameraLookAt_ = lookAt;
     setModelViewMatrix( maths::computeModelViewMatrix( cameraPosition_, lookAt ));
 }
 
